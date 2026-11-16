@@ -1,12 +1,31 @@
 package com.example.demo;
 
-public class ArticleDto {
-    private String description;
+import java.time.LocalDateTime;
 
-    public String getDescription() {
-        return description;
+public class ArticleDto {
+    private String title;
+    private String author;
+    private LocalDateTime date;
+    private String content;
+
+    public ArticleDto(){
+        LocalDateTime date=LocalDateTime.now();
+        this.date=date;
     }
-    public void setDescription(String description) {
-        this.description = description;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public String getContent() {
+        return content;
     }
 }
