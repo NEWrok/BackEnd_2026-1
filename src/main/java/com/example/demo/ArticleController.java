@@ -6,13 +6,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/articles")
 public class ArticleController {
 
     private Map<Long, ArticleDto> db = new ConcurrentHashMap<>();
     private Long idSequence = 1L;
+
+    @GetMapping
+    public ResponseEntity<Collection<ArticleDto>> getArticles(){
+        if (db.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(db.values());
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<ArticleDto> getArticle(@PathVariable Long id) {
