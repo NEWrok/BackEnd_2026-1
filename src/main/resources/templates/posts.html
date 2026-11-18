@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+
+<p>자유게시판</p>
+
+<div th:each="article : ${articles}" style="margin-bottom: 24px;">
+    <h2 th:text="${article.title}" style="margin-bottom: 8px;">제목</h2>
+
+    <div>
+        <span th:text="${article.author}">작성자</span> |
+        <span th:text="${#temporals.format(article.date, 'yyyy-MM-dd')}">2024-05-14</span>
+    </div>
+
+    <div th:text="${article.content}">내용입니다!!</div>
+</div>
+
+</body>
+</html>
